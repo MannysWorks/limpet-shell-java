@@ -9,9 +9,11 @@ public class Main {
          Scanner inputScanner = new Scanner(System.in); // Create a scanner obj to read inputs from user
          String commandInput = inputScanner.nextLine(); // Collect user input 
 
-         if(commandInput == "exit") process = false; 
-
+         if(commandInput == "exit") {
+            process = false; 
+         else 
          System.out.println(commandInput + ": command not found");
+        
         } 
     }
 }
