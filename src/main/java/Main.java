@@ -8,7 +8,7 @@ public class Main {
          Scanner inputScanner = new Scanner(System.in); // Create a scanner obj to read inputs from user
          
          String commandInput = inputScanner.nextLine(); 
-         System.out.print(commandInput + ": command not found");
+         System.out.println(commandInput + ": command not found");SS
         } 
     }
 }
