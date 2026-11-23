@@ -10,7 +10,7 @@ public class Main {
 
          if(commandInput.equals("exit")) break;  
 
-         commandInputArr[] = commandInput.split(" ");
+         String commandInputArr[] = commandInput.split(" ");
          if(commandInputArr[0].equals("echo")) System.out.println(commandInput.substring(5)); 
 
          System.out.println(commandInput + ": command not found");
