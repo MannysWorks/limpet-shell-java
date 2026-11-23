@@ -13,9 +13,11 @@ public class Main {
          Set<String> builtInCommands = new HashSet<>(Set.of("echo", "exit", "type"));
 
          if(commandInput.startsWith("type ") && builtInCommands.contains(commandInput.substring(5))) {
-            System.out.println(commandInput.substring(5) + " is a shell builtin");
+            System.out.println(commandInput.substring(5) + " is a shell builtin"); 
+            break; 
         } else {
             System.out.println(commandInput.substring(5) + ": not found");
+            break; 
         }
 
          if(commandInput.equals("exit")) {
