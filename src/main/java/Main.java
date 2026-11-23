@@ -12,17 +12,15 @@ public class Main {
          String commandInput = inputScanner.nextLine(); // Collect user input 
          Set<String> builtInCommands = new HashSet<>(Set.of("echo", "exit", "type"));
 
-         if(commandInput.startsWith("type ") && builtInCommands.contains(commandInput.substring(5))) {
-            System.out.println(commandInput.substring(5) + " is a shell builtin"); 
-            break; 
-        } else {
-            System.out.println(commandInput.substring(5) + ": not found");
-            break; 
-        }
-
          if(commandInput.equals("exit")) {
             break;  
-        }
+        } 
+         else if(commandInput.startsWith("type ")) {
+            if(builtInCommands.contains(commandInput.substring(5)))
+            System.out.println(commandInput.substring(5) + " is a shell builtin");  
+                else 
+                System.out.println(commandInput.substring(5) + ": not found");
+        } 
          else if(commandInput.startsWith("echo ")) {
             System.out.println(commandInput.substring(5)); // Echo command prints the input given 
         }
