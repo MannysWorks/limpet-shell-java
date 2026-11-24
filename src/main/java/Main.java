@@ -31,7 +31,7 @@ public class Main {
                 String PATH = System.getenv("PATH"); 
                 String[] directories = PATH.split(":"); 
                 Boolean fileExistsAndIsExecutable = false; 
-                String filePath; 
+                String filePath = ""; 
                 
                 outerLoop: 
                 for(String directoryPath : directories) {
