@@ -26,8 +26,7 @@ public class Main {
             if(builtInCommands.contains(commandInput.substring(5)))  { // If it is a built in command
                 System.out.println(commandInput.substring(5) + " is a shell builtin");
             } 
-            // TODO: the else statement after this will never run so figure that out  
-            else if(!builtInCommands.contains(commandInput.substring(5))) { // If it is not a built in command
+            else { // If it is not a built in command
                 String PATH = System.getenv("PATH"); 
                 String[] directories = PATH.split(File.pathSeparator); 
                 Boolean fileExistsAndIsExecutable = false; 
@@ -37,7 +36,7 @@ public class Main {
                 for(String directoryPath : directories) {
                     Path directory = Paths.get(directoryPath); // Create a Path object for that directory
 
-                    DirectoryStream<Path> stream = Files.newDirectoryStream(directory); // DirectoryStream allows us to get all files present in a specific directory
+                    DirectoryStream<Path> stream = Files.newDirectoryStream(directory.toAbsolutePath()); // DirectoryStream allows us to get all files present in a specific directory
                      
                     for(Path file : stream) {
                         String fileName = file.getFileName().toString();
