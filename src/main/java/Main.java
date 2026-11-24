@@ -29,7 +29,7 @@ public class Main {
             // TODO: the else statement after this will never run so figure that out  
             else if(!builtInCommands.contains(commandInput.substring(5))) { // If it is not a built in command
                 String PATH = System.getenv("PATH"); 
-                String[] directories = PATH.split(":"); 
+                String[] directories = PATH.split(File.pathSeparator); 
                 Boolean fileExistsAndIsExecutable = false; 
                 String filePath = ""; 
                 
