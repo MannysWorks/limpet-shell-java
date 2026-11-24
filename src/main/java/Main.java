@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FilenameFilter;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,6 +30,8 @@ public class Main {
                 String[] directories = PATH.split(File.pathSeparator); 
                 Boolean fileExistsAndIsExecutable = false; 
                 String filePath = ""; 
+
+                System.out.println(directories[0]);
                 
                 outerLoop: 
                 for(String directoryPath : directories) {
