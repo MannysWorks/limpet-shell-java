@@ -40,7 +40,7 @@ public class Main {
                     DirectoryStream<Path> stream = Files.newDirectoryStream(directory); // DirectoryStream allows us to get all files present in a specific directory
                      
                     for(Path file : stream) {
-                        fileName = file.getFileName().toString();
+                        String fileName = file.getFileName().toString();
                         if(fileName == commandInput.substring(5) && Files.isExecutable(file)) { // If the file with the command exists and is executable
                             fileExistsAndIsExecutable = true; 
                             filePath = file.toString();
