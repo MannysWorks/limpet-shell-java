@@ -1,5 +1,5 @@
 import java.io.File;
-import java.nio.file.DirectoryStream;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,28 +29,21 @@ public class Main {
                 String PATH = System.getenv("PATH"); 
                 String[] directories = PATH.split(File.pathSeparator); 
                 Boolean fileExistsAndIsExecutable = false; 
-                String filePath = ""; 
+                String fullPath = ""; 
 
-                System.out.println(directories[0]);
-                
-                outerLoop: 
                 for(String directoryPath : directories) {
                     Path directory = Paths.get(directoryPath); // Create a Path object for that directory
-
-                    DirectoryStream<Path> stream = Files.newDirectoryStream(directory.toAbsolutePath()); // DirectoryStream allows us to get all files present in a specific directory
-                     
-                    for(Path file : stream) {
-                        String fileName = file.getFileName().toString();
-                        if(fileName == commandInput.substring(5) && Files.isExecutable(file)) { // If the file with the command exists and is executable
-                            fileExistsAndIsExecutable = true; 
-                            filePath = file.toString();
-                            break outerLoop;  
-                        }
-                        else if ((fileName == commandInput.substring(5)) && !(Files.isExecutable(file))) continue; // If the file exists but lacks execute permissions, skip it
-                    }
+                    Path filePath = directory.resolve(commandInput.substring(5)); // Append the command to the path and return a Path obj
+                    
+                    if(Files.exists(filePath) && Files.isExecutable(filePath)){
+                        fileExistsAndIsExecutable = true; 
+                        fullPath = filePath.toString(); 
+                        break; 
+                    } 
+                    else if(Files.exists(filePath) && !Files.isExecutable(filePath)) continue; 
                 }
 
-                if(fileExistsAndIsExecutable) System.out.println(commandInput.substring(5) + " is " + filePath);
+                if(fileExistsAndIsExecutable) System.out.println(commandInput.substring(5) + " is " + fullPath);
                 else { 
                     System.out.println(commandInput.substring(5) + ": not found");
                 }
