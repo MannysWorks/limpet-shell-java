@@ -64,7 +64,7 @@ public class Main {
                 String line;
 
                 while ((line = is.readLine()) != null)
-                    System.out.println(line);
+                    System.out.println(line); // Print output from the running process after reading it
 
             } else {
                 System.out.println(commandInput + ": command not found");
