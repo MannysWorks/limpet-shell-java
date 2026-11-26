@@ -75,9 +75,11 @@ public class Main {
             String pathExt = System.getenv("PATHEXT"); // Get the path extensions
 
             Path filePathWithExt = Path.of("");
-
-            String[] extensions = pathExt.split(File.pathSeparator); // Split extensions into arrays of individual
-                                                                     // strings
+            String[] extensions = {};
+            if (pathExt != null) {
+                // Split extensions into arrays of individuals strings
+                extensions = pathExt.split(File.pathSeparator);
+            }
 
             Path filePath = directory.resolve(command); // Append the command to the path
                                                         // and return a Path obj
