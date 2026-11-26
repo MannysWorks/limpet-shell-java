@@ -1,5 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
-
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -54,6 +55,16 @@ public class Main {
 
                 // Starting the process
                 Process process = pBuilder.start();
+
+                // getInputStream gives an Input stream connected to
+                // the process standard output (and vice versa). We use
+                // that to construct a BufferedReader so we can readLine( ) it.
+                BufferedReader is = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+                String line;
+
+                while ((line = is.readLine()) != null)
+                    System.out.println(line);
 
             } else {
                 System.out.println(commandInput + ": command not found");
