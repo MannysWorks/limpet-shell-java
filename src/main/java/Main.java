@@ -20,7 +20,6 @@ public class Main {
             List<String> commands = new ArrayList<String>();
             for (String word : words) {
                 commands.add(word); // Get all commands and load into a list
-                System.out.println(word);
             }
 
             Boolean commandCanBeExecuted = !isCommandAnExecutable(commands.get(0)).isEmpty();
