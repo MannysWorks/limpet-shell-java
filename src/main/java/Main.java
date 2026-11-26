@@ -73,21 +73,21 @@ public class Main {
         for (String directoryPath : directories) {
             Path directory = Paths.get(directoryPath); // Create a Path object for that directory
             String pathExt = System.getenv("PATHEXT"); // Get the path extensions
+            Path filePath = directory.resolve(command); // Append the command to the path and return a Path obj
 
             Path filePathWithExt = Path.of("");
             String[] extensions = {};
+
             if (pathExt != null) {
                 // Split extensions into arrays of individuals strings
                 extensions = pathExt.split(File.pathSeparator);
-            }
 
-            Path filePath = directory.resolve(command); // Append the command to the path
-                                                        // and return a Path obj
-            for (String extension : extensions) {
-                filePathWithExt = Path.of(filePath + extension);
-                if (Files.exists(filePathWithExt) && Files.isExecutable(filePathWithExt)) {
-                    fullPathWithExt = filePathWithExt.toString();
-                    break;
+                for (String extension : extensions) {
+                    filePathWithExt = Path.of(filePath + extension);
+                    if (Files.exists(filePathWithExt) && Files.isExecutable(filePathWithExt)) {
+                        fullPathWithExt = filePathWithExt.toString();
+                        break;
+                    }
                 }
             }
 
