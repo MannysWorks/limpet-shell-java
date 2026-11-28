@@ -16,7 +16,7 @@ public class Main {
             String commandInput = inputScanner.nextLine(); // Collect user input
             String[] words = commandInput.trim().split("\\s+"); // Split command string into an array of words
 
-            Set<String> builtInCommands = new HashSet<>(Set.of("echo", "exit", "type"));
+            Set<String> builtInCommands = new HashSet<>(Set.of("echo", "exit", "type", "pwd"));
 
             List<String> commands = new ArrayList<String>();
             for (String word : words) {
@@ -49,6 +49,9 @@ public class Main {
                 }
             } else if (commandInput.startsWith("echo ")) {
                 System.out.println(commandInput.substring(5)); // Echo command prints the input given
+            } else if (commandInput.startsWith("pwd")) {
+                String userPresentWorkingDirectory = System.getProperty("user.dir");
+                System.out.println(userPresentWorkingDirectory);
             } else if (commandCanBeExecuted) {
                 // Creating the process with the given commands
                 ProcessBuilder pBuilder = new ProcessBuilder(commands);
